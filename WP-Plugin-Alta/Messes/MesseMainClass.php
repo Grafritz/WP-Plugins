@@ -1,6 +1,6 @@
 <?php
 
-class SP_PluginMesse
+class MesseMainClass
 {
 	// class instance
 	static $instance;
@@ -13,6 +13,7 @@ class SP_PluginMesse
 		add_filter( 'set-screen-option', [ __CLASS__, 'set_screen_messe' ], 10, 3 );
 		add_action( 'admin_menu', [ $this, 'plugin_menu_messe' ] );
 
+		//add_shortcode( 'formDemandeDeMesse', 'formulaireMesse' );
 	}
 
 
@@ -24,7 +25,7 @@ class SP_PluginMesse
 	{
 		$hook = add_menu_page(
 			'Sitepoint WP_List_Table Example',
-			'SP Messe',
+			'Messe Demo Test',
 			'manage_options',
 			'wp_list_table_class_messe',// slug / Url : ?page=wp_list_table_class 
 			[ $this, 'plugin_settings_page_messe' ]

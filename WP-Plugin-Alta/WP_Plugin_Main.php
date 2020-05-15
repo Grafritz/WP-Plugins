@@ -16,14 +16,21 @@ require_once(CUSTOMER_PLUGIN_DIR_PATH . 'Scripts/scripts-tables.php');
 register_activation_hook(__FILE__, 'createTableCustomer');
 register_activation_hook(__FILE__, 'createTableDmdDeMesse');
 
+require_once(CUSTOMER_PLUGIN_DIR_PATH . 'styles/style.php');
+wp_register_style('myStyleSheet', 'wp_load_plugin_css');
+//wp_enqueue_style( 'myStyleSheet');
+
+require_once(CUSTOMER_PLUGIN_DIR_PATH . 'Messes/ShortCode/ViewsForms.php');
+add_shortcode( 'formDemandeDeMesse', 'formulaireMesse' ); 
+
 require_once(CUSTOMER_PLUGIN_DIR_PATH . 'Customer/wp-CustomerClass.php');
 require_once(CUSTOMER_PLUGIN_DIR_PATH . 'Customer/SP-PluginCust.php');
 require_once(CUSTOMER_PLUGIN_DIR_PATH . 'Messes/DmdDeMesseclass.php');
-require_once(CUSTOMER_PLUGIN_DIR_PATH . 'Messes/messe-class.php');
+require_once(CUSTOMER_PLUGIN_DIR_PATH . 'Messes/MesseMainClass.php');
 
 
 add_action( 'plugins_loaded', function () {
-	SP_PluginMesse::get_instance();
+	MesseMainClass::get_instance();
 } );
 
 add_action( 'plugins_loaded', function () {
